@@ -1,0 +1,1509 @@
+
+/* =========================================
+   EDITS_DEWWW - MAIN STYLESHEET
+   Dark Cinematic Portfolio
+========================================= */
+
+/* RESET */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg: #090909;
+    --panel: #111111;
+    --text: #f4f2ef;
+    --muted: #999999;
+    --line: #262626;
+    --accent: #c6ff4d;
+    --purple: #a78bfa;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "DM Sans", sans-serif;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background:
+        radial-gradient(ellipse at 75% 12%, rgba(167,139,250,.09), transparent 32%),
+        radial-gradient(ellipse at 10% 52%, rgba(198,255,77,.045), transparent 28%);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.section-wrap {
+    width: min(1160px, calc(100% - 64px));
+    margin: auto;
+}
+
+/* BACKGROUND TEXTURE */
+
+.noise {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+    opacity: .035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+}
+
+/* HEADER */
+
+.site-header {
+    height: 82px;
+    width: min(1160px, calc(100% - 64px));
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    z-index: 10;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: "Space Grotesk";
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -.5px;
+}
+
+.brand-mark {
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    background: var(--accent);
+    color: #111;
+    display: grid;
+    place-items: center;
+    font-size: 17px;
+}
+
+.brand-dot {
+    color: var(--accent);
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 34px;
+    font-size: 12px;
+    color: #bcbcbc;
+}
+
+.nav a {
+    transition: color .2s;
+}
+
+.nav a:hover,
+.text-link:hover {
+    color: var(--accent);
+}
+
+.nav-cta {
+    padding: 11px 16px;
+    border: 1px solid #555;
+    border-radius: 30px;
+    color: var(--text) !important;
+}
+
+.nav-cta span {
+    color: var(--accent);
+    margin-left: 10px;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: 0;
+    cursor: pointer;
+}
+
+/* HERO SECTION */
+
+.hero {
+    min-height: 650px;
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    align-items: center;
+    padding-top: 50px;
+    padding-bottom: 70px;
+}
+
+.eyebrow {
+    font-size: 10px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: #bdbdbd;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pulse {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 14px var(--accent);
+}
+
+h1, h2, h3 {
+    font-family: "Space Grotesk", sans-serif;
+    letter-spacing: -.055em;
+}
+
+h1 {
+    font-size: clamp(68px, 8.3vw, 112px);
+    line-height: .92;
+    margin: 27px 0 25px;
+    font-weight: 600;
+}
+
+.gradient-text {
+    background: linear-gradient(
+        105deg,
+        var(--accent),
+        #d9ff9a 42%,
+        #b9a5ff 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero-desc {
+    max-width: 440px;
+    color: #a5a5a5;
+    line-height: 1.8;
+    font-size: 15px;
+}
+
+.hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    margin-top: 34px;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    gap: 25px;
+    padding: 15px 20px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    transition: transform .2s, box-shadow .2s;
+}
+
+.button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 35px #c6ff4d22;
+}
+
+.button-primary {
+    background: var(--accent);
+    color: #101010;
+}
+
+.button span {
+    font-size: 18px;
+}
+
+.text-link {
+    font-size: 12px;
+    color: #ddd;
+}
+
+.text-link span {
+    color: var(--accent);
+    margin-left: 5px;
+}
+
+.hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 75px;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: #777;
+}
+
+.meta-line {
+    width: 35px;
+    height: 1px;
+    background: #444;
+}
+
+/* HERO VISUAL */
+
+.hero-art {
+    height: 460px;
+    position: relative;
+    display: grid;
+    place-items: center;
+}
+
+.orbit {
+    position: absolute;
+    border: 1px solid #292929;
+    border-radius: 50%;
+    transform: rotate(-25deg);
+}
+
+.orbit-one {
+    width: 440px;
+    height: 290px;
+}
+
+.orbit-two {
+    width: 350px;
+    height: 440px;
+    transform: rotate(42deg);
+    border-color: #202020;
+}
+
+.play-card {
+    width: 290px;
+    height: 360px;
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(145deg, #222, #101010 70%);
+    border: 1px solid #414141;
+    border-radius: 5px;
+    box-shadow: 25px 30px 80px #000;
+    transform: rotate(7deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 17px;
+    overflow: hidden;
+}
+
+.play-card::before {
+    content: "";
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #c6ff4d22, transparent 68%);
+    top: 60px;
+    left: 15px;
+}
+
+.play-top,
+.play-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    color: #aaa;
+    position: relative;
+}
+
+.mini-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-right: -55px;
+}
+
+.play-symbol {
+    width: 105px;
+    height: 105px;
+    border: 1px solid #777;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    padding-left: 6px;
+    font-size: 30px;
+    color: var(--accent);
+    align-self: center;
+    position: relative;
+    box-shadow: 0 0 45px #c6ff4d13;
+}
+
+.float-tag {
+    position: absolute;
+    z-index: 3;
+    background: #171717;
+    border: 1px solid #383838;
+    padding: 12px 15px;
+    font-size: 9px;
+    letter-spacing: 1.4px;
+    box-shadow: 0 10px 30px #000;
+}
+
+.tag-top {
+    top: 70px;
+    right: 0;
+    transform: rotate(5deg);
+}
+
+.tag-bottom {
+    bottom: 55px;
+    left: 0;
+    transform: rotate(-5deg);
+}
+
+.hero-index {
+    position: absolute;
+    bottom: 3px;
+    right: 8px;
+    color: #777;
+    font-size: 11px;
+}
+
+.hero-index span {
+    color: var(--accent);
+    padding: 0 6px;
+}
+
+/* RUNNING TEXT */
+
+.ticker {
+    overflow: hidden;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 19px 0;
+    background: #0d0d0d;
+}
+
+.ticker-track {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 40px;
+    white-space: nowrap;
+    min-width: 900px;
+    font-family: "Space Grotesk";
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #aaa;
+}
+
+.ticker b {
+    color: var(--accent);
+    font-size: 17px;
+}
+
+/* GENERAL SECTION */
+
+.section-pad {
+    padding-top: 115px;
+    padding-bottom: 115px;
+}
+
+.section-label {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid var(--line);
+    padding-top: 15px;
+    color: #777;
+    font-size: 9px;
+    letter-spacing: 1.6px;
+}
+
+/* ABOUT */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-top: 70px;
+}
+
+.about h2,
+.section-heading h2 {
+    font-size: clamp(48px, 6vw, 76px);
+    line-height: 1.02;
+    font-weight: 500;
+}
+
+.about-copy {
+    padding-top: 8px;
+    max-width: 480px;
+}
+
+.lead {
+    font-family: "Space Grotesk";
+    font-size: 23px;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+.about-copy > p:not(.lead) {
+    color: #999;
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+.skill-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 27px;
+}
+
+.skill-chips span {
+    border: 1px solid #333;
+    border-radius: 30px;
+    padding: 9px 13px;
+    color: #bbb;
+    font-size: 10px;
+}
+
+/* PORTFOLIO */
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin: 60px 0 42px;
+}
+
+.section-heading > p {
+    max-width: 250px;
+    color: #888;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.work-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 36px 22px;
+}
+
+.work-card {
+    min-width: 0;
+}
+
+.work-large {
+    grid-row: span 2;
+}
+
+.work-visual {
+    height: 230px;
+    position: relative;
+    overflow: hidden;
+    background: #151515;
+    border: 1px solid #292929;
+    display: grid;
+    place-items: center;
+}
+
+.work-large .work-visual {
+    height: 520px;
+}
+
+.visual-one {
+    background: radial-gradient(
+        ellipse at 50% 50%,
+        #5c663d 0,
+        #242a1d 28%,
+        #111 70%
+    );
+}
+
+.visual-two {
+    background: radial-gradient(
+        ellipse at 50% 40%,
+        #56446b 0,
+        #211b2a 42%,
+        #111 75%
+    );
+}
+
+.visual-three {
+    background: radial-gradient(
+        ellipse at 50% 45%,
+        #4d5962 0,
+        #1b2227 45%,
+        #111 75%
+    );
+}
+
+.visual-number {
+    position: absolute;
+    top: 17px;
+    left: 18px;
+    font-family: "Space Grotesk";
+    font-size: 12px;
+    color: #aaa;
+}
+
+.visual-center {
+    text-align: center;
+    display: grid;
+    justify-items: center;
+    gap: 13px;
+}
+
+.visual-play {
+    width: 52px;
+    height: 52px;
+    border: 1px solid #ffffff77;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    padding-left: 3px;
+    color: var(--accent);
+    font-size: 13px;
+    backdrop-filter: blur(5px);
+}
+
+.visual-center small {
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: #aaa;
+}
+
+.work-type {
+    position: absolute;
+    bottom: 17px;
+    right: 18px;
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    color: #bbb;
+}
+
+.work-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 17px 2px 0;
+}
+
+.work-info h3 {
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: -.03em;
+}
+
+.work-info p {
+    font-size: 10px;
+    color: #777;
+    margin-top: 6px;
+}
+
+.work-arrow {
+    color: var(--accent);
+    font-size: 20px;
+}
+
+.work-note {
+    font-size: 10px;
+    color: #666;
+    margin-top: 25px;
+    line-height: 1.7;
+}
+
+/* SERVICES */
+
+.services .section-heading {
+    margin-bottom: 40px;
+}
+
+.service-list {
+    border-top: 1px solid var(--line);
+}
+
+.service-row {
+    display: grid;
+    grid-template-columns: 70px 1.1fr 1fr 25px;
+    align-items: center;
+    gap: 20px;
+    padding: 27px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.service-no {
+    font-size: 10px;
+    color: var(--accent);
+}
+
+.service-row h3 {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.service-row p {
+    font-size: 11px;
+    color: #888;
+    line-height: 1.7;
+    max-width: 270px;
+}
+
+.service-plus {
+    color: var(--accent);
+    font-size: 18px;
+}
+
+/* CONTACT */
+
+.contact {
+    padding-bottom: 100px;
+}
+
+.contact-inner {
+    padding: 90px 30px 75px;
+    text-align: center;
+    border: 1px solid #292929;
+    margin-top: 35px;
+    background:
+        radial-gradient(
+            ellipse at 50% 100%,
+            #c6ff4d0b,
+            transparent 55%
+        ),
+        #0d0d0d;
+}
+
+.contact-inner .eyebrow {
+    justify-content: center;
+}
+
+.contact h2 {
+    font-size: clamp(58px, 8vw, 100px);
+    line-height: .96;
+    margin: 25px 0;
+}
+
+.contact-desc {
+    color: #999;
+    font-size: 13px;
+    margin: 22px auto 28px;
+    max-width: 430px;
+    line-height: 1.8;
+}
+
+.contact-button {
+    margin: auto;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    margin-top: 55px;
+}
+
+.social-links a {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: #888;
+}
+
+.social-links span {
+    color: var(--accent);
+    margin-left: 5px;
+}
+
+/* FOOTER */
+
+.footer {
+    min-height: 90px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #666;
+    font-size: 10px;
+}
+
+.footer .brand {
+    color: var(--text);
+}
+
+.back-top {
+    letter-spacing: 1.3px;
+    color: #aaa;
+    font-size: 9px;
+}
+
+/* CONTENT LAYER FOR METEOR CANVAS */
+
+.site-header,
+main,
+.footer {
+    position: relative;
+    z-index: 1;
+}
+
+#meteor-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* RESPONSIVE MOBILE */
+
+@media (max-width: 760px) {
+
+    .section-wrap,
+    .site-header {
+        width: calc(100% - 38px);
+    }
+
+    .site-header {
+        height: 70px;
+    }
+
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        padding: 10px;
+    }
+
+    .menu-toggle span {
+        width: 22px;
+        height: 1px;
+        background: #fff;
+    }
+
+    .nav {
+        display: none;
+        position: absolute;
+        top: 69px;
+        left: -19px;
+        right: -19px;
+        padding: 22px 20px 25px;
+        background: #101010;
+        border-bottom: 1px solid #333;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 22px;
+    }
+
+    .nav.open {
+        display: flex;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        padding-top: 75px;
+        padding-bottom: 45px;
+        min-height: 0;
+    }
+
+    .hero h1 {
+        font-size: clamp(65px, 16vw, 95px);
+    }
+
+    .hero-desc {
+        font-size: 13px;
+    }
+
+    .hero-meta {
+        margin-top: 48px;
+        font-size: 8px;
+    }
+
+    .hero-art {
+        height: 390px;
+        margin-top: 15px;
+    }
+
+    .play-card {
+        width: 245px;
+        height: 310px;
+    }
+
+    .orbit-one {
+        width: 340px;
+        height: 230px;
+    }
+
+    .orbit-two {
+        width: 270px;
+        height: 350px;
+    }
+
+    .tag-top {
+        right: 2px;
+        top: 42px;
+    }
+
+    .tag-bottom {
+        left: 0;
+        bottom: 35px;
+    }
+
+    .ticker-track {
+        justify-content: flex-start;
+        gap: 27px;
+    }
+
+    .section-pad {
+        padding-top: 78px;
+        padding-bottom: 78px;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        margin-top: 48px;
+    }
+
+    .about h2,
+    .section-heading h2 {
+        font-size: 54px;
+    }
+
+    .lead {
+        font-size: 20px;
+    }
+
+    .section-heading {
+        display: block;
+        margin: 45px 0 30px;
+    }
+
+    .section-heading > p {
+        margin-top: 18px;
+    }
+
+    .work-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .work-large {
+        grid-row: auto;
+    }
+
+    .work-large .work-visual {
+        height: 360px;
+    }
+
+    .work-visual {
+        height: 240px;
+    }
+
+    .service-row {
+        grid-template-columns: 32px 1fr 20px;
+        gap: 12px;
+        padding: 23px 0;
+    }
+
+    .service-row h3 {
+        font-size: 18px;
+    }
+
+    .service-row p {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    .service-plus {
+        grid-column: 3;
+        grid-row: 1;
+    }
+
+    .contact-inner {
+        padding: 70px 17px 55px;
+    }
+
+    .contact h2 {
+        font-size: 60px;
+    }
+
+    .footer {
+        padding: 25px 0;
+        gap: 18px;
+        flex-wrap: wrap;
+    }
+
+    .footer > span {
+        order: 3;
+        width: 100%;
+    }
+}
+
+/* ENTRY ANIMATION */
+
+@media (prefers-reduced-motion: no-preference) {
+
+    .hero-copy {
+        animation: rise .8s ease both;
+    }
+
+    .hero-art {
+        animation: rise 1s .15s ease both;
+    }
+
+    @keyframes rise {
+        from {
+            opacity: 0;
+            transform: translateY(18px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+
+    #meteor-canvas {
+        display: none;
+    }
+}
+
+
+/* =========================================
+   PORTFOLIO - VERTICAL VIDEO FORMAT 9:16
+========================================= */
+
+/* Membuat tiga kolom portfolio */
+.work-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    align-items: start;
+}
+
+/* Menghilangkan ukuran khusus project pertama */
+.work-large {
+    grid-row: auto;
+}
+
+/* Mengubah thumbnail menjadi vertikal */
+.work-visual {
+    width: 100%;
+    aspect-ratio: 9 / 16 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Memastikan isi thumbnail tetap di tengah */
+.placeholder-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Responsif tablet */
+@media (max-width: 900px) {
+    .work-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Responsif HP */
+@media (max-width: 600px) {
+    .work-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .work-visual {
+        aspect-ratio: 9 / 16 !important;
+    }
+}
+
+
+/* =========================================
+   EDITS_DEWWW - HORIZONTAL PORTFOLIO SLIDER
+========================================= */
+
+.work-grid {
+    display: grid;
+
+    /* Galeri berjalan ke samping */
+    grid-auto-flow: column;
+    grid-auto-columns: clamp(220px, 27vw, 310px);
+
+    /* Mengaktifkan scroll horizontal */
+    grid-template-columns: unset;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    gap: 22px;
+
+    padding: 5px 2px 24px;
+
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+    scrollbar-width: thin;
+    scrollbar-color: #c6ff4d #222;
+}
+
+/* Ukuran setiap kartu */
+.work-card,
+.work-large {
+    width: 100%;
+    min-width: 0;
+    grid-row: auto;
+    scroll-snap-align: start;
+}
+
+/* Thumbnail tetap vertikal */
+.work-visual {
+    width: 100%;
+    aspect-ratio: 9 / 16 !important;
+    height: auto !important;
+    min-height: 0 !important;
+}
+
+/* Scrollbar Chrome dan Edge */
+.work-grid::-webkit-scrollbar {
+    height: 5px;
+}
+
+.work-grid::-webkit-scrollbar-track {
+    background: #222;
+    border-radius: 10px;
+}
+
+.work-grid::-webkit-scrollbar-thumb {
+    background: #c6ff4d;
+    border-radius: 10px;
+}
+
+/* Tampilan HP */
+@media (max-width: 600px) {
+
+    .work-grid {
+        grid-auto-columns: 75%;
+        gap: 16px;
+    }
+
+}
+
+
+/* =========================================
+   ADDITIONAL PORTFOLIO COLORS
+========================================= */
+
+.placeholder-four {
+    background:
+        radial-gradient(ellipse at 50% 45%, #d18c4b35, transparent 55%),
+        linear-gradient(145deg, #38271e, #101010 75%);
+}
+
+.placeholder-five {
+    background:
+        radial-gradient(ellipse at 50% 45%, #3c9d9c35, transparent 55%),
+        linear-gradient(145deg, #172d30, #101010 75%);
+}
+
+.placeholder-six {
+    background:
+        radial-gradient(ellipse at 50% 45%, #bd719c35, transparent 55%),
+        linear-gradient(145deg, #34202e, #101010 75%);
+}
+
+
+/* =========================================
+   PORTFOLIO SLIDER FINAL
+========================================= */
+
+.work-grid {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: clamp(220px, 24%, 310px);
+    grid-template-columns: unset;
+    gap: 20px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+    padding: 5px 2px 24px;
+
+    scrollbar-width: thin;
+    scrollbar-color: #c6ff4d #222;
+}
+
+.work-card,
+.work-large {
+    min-width: 0;
+    width: 100%;
+    grid-row: auto;
+    scroll-snap-align: start;
+}
+
+.work-visual {
+    width: 100%;
+    height: auto !important;
+    aspect-ratio: 9 / 16 !important;
+    min-height: 0 !important;
+}
+
+@media (max-width: 600px) {
+    .work-grid {
+        grid-auto-columns: 75%;
+        gap: 16px;
+    }
+}
+
+
+/* =========================================
+   MOBILE PORTFOLIO - CENTERED SLIDER
+========================================= */
+
+@media (max-width: 600px) {
+
+    .work-grid {
+        display: grid;
+        grid-auto-flow: column;
+
+        /* Lebar kartu */
+        grid-auto-columns: 82%;
+
+        /* Posisi kartu selalu di tengah */
+        justify-content: start;
+        scroll-snap-type: x mandatory;
+        scroll-snap-stop: always;
+        scroll-padding-inline: 9%;
+
+        /* Ruang kiri dan kanan */
+        padding-left: 9%;
+        padding-right: 9%;
+
+        gap: 16px;
+
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        scroll-behavior: smooth;
+    }
+
+    .work-card,
+    .work-large {
+        width: 100%;
+        min-width: 0;
+        scroll-snap-align: center;
+    }
+
+}
+
+
+/* =========================================
+   FIX PLACEHOLDER CONTENT ALIGNMENT
+========================================= */
+
+.work-visual .placeholder-content {
+    position: absolute !important;
+    inset: 0 !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    padding: 20px !important;
+    gap: 12px !important;
+
+    text-align: center !important;
+    box-sizing: border-box;
+}
+
+.work-visual .placeholder-content > * {
+    position: static !important;
+    width: 100% !important;
+    flex: 0 0 auto;
+    text-align: center !important;
+    margin: 0 !important;
+}
+
+.work-visual .placeholder-content .placeholder-icon {
+    width: 58px !important;
+    height: 58px !important;
+    flex-shrink: 0;
+}
+
+.work-visual .placeholder-content h3 {
+    font-size: 22px;
+    line-height: 1.3;
+}
+
+.work-visual .placeholder-content p {
+    font-size: 8px;
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   ABOUT PROFILE PHOTO
+========================================= */
+
+.about-profile-photo {
+    width: 180px;
+    aspect-ratio: 1 / 1;
+
+    margin-top: 28px;
+
+    padding: 5px;
+
+    border: 2px solid var(--accent);
+    border-radius: 12px;
+
+    background: #101010;
+
+    box-shadow:
+        0 0 12px rgba(198, 255, 77, 0.18),
+        0 0 35px rgba(198, 255, 77, 0.08);
+
+    overflow: hidden;
+
+    transition: .35s ease;
+}
+
+.about-profile-photo img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+    object-position: center;
+
+    border-radius: 7px;
+}
+
+.about-profile-photo:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 0 18px rgba(198, 255, 77, 0.3),
+        0 0 45px rgba(198, 255, 77, 0.12);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .about-profile-photo {
+        width: 150px;
+        margin-top: 22px;
+    }
+}
+
+
+/* =========================================
+   HERO INSTAGRAM VIDEO THUMBNAIL
+========================================= */
+
+.hero-art {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-video-link {
+    position: relative;
+    display: block;
+
+    width: clamp(240px, 24vw, 310px);
+    aspect-ratio: 4 / 5;
+
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.22);
+    border-radius: 5px;
+
+    background: #111;
+    transform: rotate(6deg);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.5),
+        0 0 40px rgba(198,255,77,.08);
+
+    transition: .4s ease;
+    text-decoration: none;
+}
+
+.hero-video-link:hover {
+    transform: rotate(0deg) translateY(-8px);
+    border-color: #c6ff4d;
+}
+
+.hero-video-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.hero-video-overlay {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(0,0,0,.12);
+    transition: .3s ease;
+}
+
+.hero-video-play {
+    width: 76px;
+    height: 76px;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid rgba(255,255,255,.6);
+    border-radius: 50%;
+
+    color: #c6ff4d;
+    font-size: 25px;
+
+    background: rgba(0,0,0,.25);
+    transition: .3s ease;
+}
+
+.hero-video-link:hover .hero-video-overlay {
+    background: rgba(0,0,0,.35);
+}
+
+.hero-video-link:hover .hero-video-play {
+    transform: scale(1.12);
+    background: rgba(198,255,77,.12);
+}
+
+.hero-video-duration {
+    position: absolute;
+    bottom: 18px;
+    right: 15px;
+
+    color: white;
+    font-size: 8px;
+    letter-spacing: 2px;
+}
+
+.hero-video-tag {
+    position: absolute;
+    z-index: 3;
+
+    padding: 13px 17px;
+
+    background: #171717;
+    border: 1px solid #363636;
+
+    color: #eee;
+    font-size: 9px;
+    letter-spacing: 1px;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,.3);
+}
+
+.hero-video-tag-top {
+    top: 16%;
+    right: 0;
+    transform: rotate(5deg);
+}
+
+.hero-video-tag-bottom {
+    bottom: 15%;
+    left: 0;
+    transform: rotate(-5deg);
+}
+
+/* MOBILE */
+@media (max-width: 760px) {
+    .hero-video-link {
+        width: min(72%, 280px);
+    }
+
+    .hero-video-tag {
+        font-size: 7px;
+        padding: 10px 12px;
+    }
+}
+
+
+/* =====================================
+   PROJECT VIDEO PLAYER
+===================================== */
+
+.work-video {
+    position: relative;
+    overflow: hidden;
+    background: #111;
+}
+
+.work-video-player {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    z-index: 1;
+}
+
+.work-video .visual-number,
+.work-video .work-type {
+    z-index: 2;
+    pointer-events: none;
+}
+
+
+/* FIX VIDEO PROJECT 03 */
+.work-visual video,
+.work-visual .work-video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain !important;
+    object-position: center center !important;
+    display: block;
+    background: #080808;
+}
