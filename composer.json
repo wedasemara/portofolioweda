@@ -11,10 +11,12 @@
     "require": {
         "php": "^8.3",
         "laravel/framework": "^13.17",
-        "laravel/tinker": "^3.0"
+        "laravel/tinker": "^3.0",
+        "league/flysystem-aws-s3-v3": "^3.35"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
+        "laravel/boost": "^2.10",
         "laravel/pail": "^1.2.5",
         "laravel/pao": "^1.0.6",
         "laravel/pint": "^1.27",
@@ -40,7 +42,11 @@
             "composer install",
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
             "@php artisan key:generate",
-            "@php artisan migrate --force",
+            "@php artisan config:clear",
+            "@php artisan cms:ensure-database",
+            "@php artisan migrate --seed --force",
+            "@php artisan storage:link --force",
+            "@php artisan cms:user",
             "npm install --ignore-scripts",
             "npm run build"
         ],

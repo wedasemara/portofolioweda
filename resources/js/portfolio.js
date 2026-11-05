@@ -255,3 +255,229 @@ if (yearElement) {
     requestAnimationFrame(animate);
 
 })();
+
+
+/* =========================================
+   4. AUTO-SCROLL PORTFOLIO
+========================================= */
+
+(() => {
+
+    const grid = document.querySelector(".work-grid");
+
+    if (!grid) return;
+
+    // Menghormati pengaturan reduced motion
+    if (
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches
+    ) return;
+
+    const SPEED = 40; // piksel per detik
+
+    const pauseReasons = new Set();
+
+    let inView = false;
+    let direction = 1;
+    let lastTimestamp = null;
+    let resumeTimer = null;
+
+    // Scroll halus bawaan CSS dapat mengganggu animasi
+    grid.style.scrollBehavior = "auto";
+
+    // Snap dimatikan agar auto-scroll tidak tersendat
+    grid.style.scrollSnapType = "none";
+
+    const maxScroll = () =>
+        grid.scrollWidth - grid.clientWidth;
+
+    const pauseForInteraction = () => {
+
+        pauseReasons.add("interaction");
+
+        clearTimeout(resumeTimer);
+
+    };
+
+    const resumeAfterInteraction = (delay = 1500) => {
+
+        clearTimeout(resumeTimer);
+
+        resumeTimer = setTimeout(() => {
+
+            pauseReasons.delete("interaction");
+
+        }, delay);
+
+    };
+
+
+    grid.addEventListener("mouseenter", () => {
+
+        pauseReasons.add("hover");
+
+    });
+
+    grid.addEventListener("mouseleave", () => {
+
+        pauseReasons.delete("hover");
+
+        resumeAfterInteraction(0);
+
+    });
+
+    grid.addEventListener("focusin", () => {
+
+        pauseReasons.add("focus");
+
+    });
+
+    grid.addEventListener("focusout", () => {
+
+        pauseReasons.delete("focus");
+
+    });
+
+    grid.addEventListener("pointerdown", () => {
+
+        pauseForInteraction();
+
+    });
+
+    grid.addEventListener("pointerup", () => {
+
+        resumeAfterInteraction();
+
+    });
+
+    grid.addEventListener("pointercancel", () => {
+
+        resumeAfterInteraction();
+
+    });
+
+    window.addEventListener("pointerup", () => {
+
+        resumeAfterInteraction();
+
+    });
+
+    grid.addEventListener("wheel", () => {
+
+        pauseForInteraction();
+
+        resumeAfterInteraction();
+
+    }, { passive: true });
+
+    grid.addEventListener("touchstart", () => {
+
+        pauseForInteraction();
+
+    }, { passive: true });
+
+    grid.addEventListener("touchend", () => {
+
+        resumeAfterInteraction();
+
+    }, { passive: true });
+
+    grid.addEventListener("touchcancel", () => {
+
+        resumeAfterInteraction();
+
+    }, { passive: true });
+
+
+    document.addEventListener("visibilitychange", () => {
+
+        if (document.hidden) {
+
+            pauseReasons.add("hidden");
+
+        } else {
+
+            pauseReasons.delete("hidden");
+
+        }
+
+    });
+
+
+    // Mulai bergerak saat section terlihat
+    const observer = new IntersectionObserver(
+        (entries) => {
+
+            inView = entries[0].isIntersecting;
+
+        },
+        { threshold: 0.15 }
+    );
+
+    observer.observe(grid);
+
+
+    function step(timestamp) {
+
+        if (
+            !inView ||
+            pauseReasons.size > 0
+        ) {
+
+            lastTimestamp = null;
+
+            requestAnimationFrame(step);
+
+            return;
+
+        }
+
+        if (lastTimestamp === null) {
+            lastTimestamp = timestamp;
+        }
+
+        const delta = Math.min(
+            timestamp - lastTimestamp,
+            64
+        ) / 1000;
+
+        lastTimestamp = timestamp;
+
+        const max = maxScroll();
+
+        if (max <= 0) {
+
+            requestAnimationFrame(step);
+
+            return;
+
+        }
+
+        let next = (
+            grid.scrollLeft +
+            SPEED * delta * direction
+        );
+
+        // Berbalik arah di kedua ujung
+        if (next >= max) {
+
+            next = max;
+            direction = -1;
+
+        } else if (next <= 0) {
+
+            next = 0;
+            direction = 1;
+
+        }
+
+        grid.scrollLeft = next;
+
+        requestAnimationFrame(step);
+
+    }
+
+    requestAnimationFrame(step);
+
+})();
